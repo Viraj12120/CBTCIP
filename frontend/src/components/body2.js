@@ -8,9 +8,66 @@ import Footer from "./Footer";
 gsap.registerPlugin(ScrollTrigger);
 
 const Body2 = () => {
+	useEffect(() => {
+		// Animation for each section with a stagger effect
+		gsap.utils.toArray(".animate-on-scroll").forEach((element) => {
+			gsap.fromTo(
+				element,
+				{ autoAlpha: 0, y: 50 },
+				{
+					duration: 1.5, // Increase duration for a slower effect
+					autoAlpha: 1,
+					y: 0,
+					scrollTrigger: {
+						trigger: element,
+						start: "top 90%", // Adjust the start position
+						end: "bottom 10%", // Adjust the end position
+						scrub: 2, // Increase scrub value for a smoother scroll
+						toggleActions: "play none none reverse",
+					},
+				}
+			);
+		});
+
+		// Special animation for Carousel and Reviews
+		gsap.fromTo(
+			".carousel",
+			{ autoAlpha: 0, y: 50 },
+			{
+				duration: 3.5, // Increase duration for a slower effect
+				autoAlpha: 1,
+				y: 0,
+				scrollTrigger: {
+					trigger: ".carousel",
+					start: "top 20%", // Adjust the start position
+					end: "bottom 90%", // Adjust the end position
+					scrub: 4, // Increase scrub value for a smoother scroll
+					toggleActions: "play none none reverse",
+				},
+			}
+		);
+
+		gsap.fromTo(
+			".reviews",
+			{ autoAlpha: 0, y: 50 },
+			{
+				duration: 1.5, // Increase duration for a slower effect
+				autoAlpha: 1,
+				y: 0,
+				scrollTrigger: {
+					trigger: ".reviews",
+					start: "top 90%", // Adjust the start position
+					end: "bottom 10%", // Adjust the end position
+					scrub: 2, // Increase scrub value for a smoother scroll
+					toggleActions: "play none none reverse",
+				},
+			}
+		);
+	}, []);
+
 	return (
-		<div className="w-full text-black  bg-[#F8F6F6]  ">
-			<div className="mx-auto py-28 px-4  animate-on-scroll">
+		<div className="w-full text-black py-12 bg-[#F8F6F6]  ">
+			<div className="mx-auto px-4 py-32 animate-on-scroll">
 				<h2 className="text-2xl font-mono font-extralight mb-1 pl-8 ">
 					Welcome to Unplugged
 				</h2>
